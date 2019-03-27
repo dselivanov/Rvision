@@ -90,3 +90,14 @@ resize <- function(image, height = NULL, width = NULL, fx = NULL, fy = NULL, int
                    exact = 5,
                    stop("This is not a valid interpolation method.")))
 }
+
+
+#' @export
+border <- function(image, top, bottom, left, right, borderType = 1L) {
+  if (!isImage(image))
+    stop("'image' must be an Image object.")
+
+  stopifnot(borderType >= 0 && borderType <= 5)
+
+  `_border`(image, top, bottom, left, right, borderType)
+}
